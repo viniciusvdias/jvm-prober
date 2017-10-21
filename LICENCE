@@ -2,6 +2,10 @@ Copyright for portions of project jvm-prober (lib/jinja2) are held by
 the Jinja Team, 2009 as part of project Jinja2
 and are provided under the BSD license.
 
+Copyright for portions of project jvm-prober (lib/markupsafe) are held by
+the Armin Ronacher and contributors, 2010 as part of project MarkupSafe
+and are provided under the BSD license.
+
 All other copyright for project jvm-prober are held by
 Vinicius Vitor dos Santos Dias, 2017.
 

@@ -15,6 +15,7 @@ LIB_DIR = os.path.join(THIS_DIR, "..", "..", "..", "lib")
 TMP_DIR = os.path.join(JAVA_DIR, "tmp")
 
 # Because we ship jinja2 with this project, we need to add it to the path
+sys.path.append("%s/markupsafe" % LIB_DIR)
 sys.path.append("%s/jinja2" % LIB_DIR)
 from jinja2 import Environment, FileSystemLoader
 
