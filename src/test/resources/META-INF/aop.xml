@@ -1,0 +1,15 @@
+<aspectj>
+
+  <aspects>
+    <aspect name="logger.MethodLogger"/>
+  </aspects>
+
+  <weaver options="-XnoInline -Xset:weaveJavaPackages=true,weaveJavaxPackages=true -verbose -showWeaveInfo">
+    <include within="*"/>
+    <!-- <include within="logger.*"/>
+    <include within="example.*"/>
+    <include within="org.apache.spark.*"/>
+    <include within="org.apache.spark.rdd.*"/> -->
+  </weaver>
+
+</aspectj>

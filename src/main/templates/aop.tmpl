@@ -1,0 +1,13 @@
+<aspectj>
+
+  <aspects>
+     {% for probe_name in probe_names %}
+     <aspect name="{{ probe_name }}.ProbeAspect"/>
+     {% endfor %}
+  </aspects>
+
+  <weaver options="-XnoInline -Xlint:ignore -Xset:weaveJavaPackages=true,weaveJavaxPackages=true -verbose -showWeaveInfo">
+    <include within="*"/>
+  </weaver>
+
+</aspectj>

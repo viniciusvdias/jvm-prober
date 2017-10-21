@@ -1,0 +1,25 @@
+probes:
+
+   # probing a constructor having one argument
+   number_constructor:
+      method: example.Number.new
+      args:
+         - int
+
+   # probing a method having no arguments
+   number_doubleit:
+      method: example.Number.doubleIt
+      return: example.Number
+
+   # probing a constructor having one argument
+   sparkcontext_contructor:
+      method: org.apache.spark.SparkContext.new
+      args:
+         - org.apache.spark.SparkConf
+
+   # probing a method having two arguments and returning nothing ('void')
+   sparkexecutor_launchtask:
+      method: org.apache.spark.executor.Executor.launchTask
+      args:
+         - org.apache.spark.executor.ExecutorBackend
+         - org.apache.spark.scheduler.TaskDescription

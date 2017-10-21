@@ -1,0 +1,14 @@
+<aspectj>
+
+  <aspects>
+          <aspect name="number_constructor.ProbeAspect"/>
+          <aspect name="number_doubleit.ProbeAspect"/>
+          <aspect name="sparkcontext_contructor.ProbeAspect"/>
+          <aspect name="sparkexecutor_launchtask.ProbeAspect"/>
+       </aspects>
+
+  <weaver options="-XnoInline -Xlint:ignore -Xset:weaveJavaPackages=true,weaveJavaxPackages=true -verbose -showWeaveInfo">
+    <include within="*"/>
+  </weaver>
+
+</aspectj>
