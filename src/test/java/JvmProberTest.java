@@ -17,12 +17,13 @@ public class JvmProberTest {
     @Test public void testJvmProber() throws InterruptedException {
        Number t1 = new Number(1);
        t1.doubleIt();
-       SparkConf conf = new SparkConf();
-       conf = conf.setMaster("local[2]");
-       conf = conf.setAppName("LibraryTest");
-       JavaSparkContext sc = new JavaSparkContext(conf);
-       List<Integer> data = Arrays.asList(1,2,3,4,5,6,7);
-       sc.parallelize(data).count();
-       sc.stop();
+       t1.subtract(1);
+       // SparkConf conf = new SparkConf();
+       // conf = conf.setMaster("local[2]");
+       // conf = conf.setAppName("LibraryTest");
+       // JavaSparkContext sc = new JavaSparkContext(conf);
+       // List<Integer> data = Arrays.asList(1,2,3,4,5,6,7);
+       // sc.parallelize(data).count();
+       // sc.stop();
     }
 }

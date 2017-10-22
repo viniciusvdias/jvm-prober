@@ -3,6 +3,7 @@
   <aspects>
           <aspect name="number_constructor.ProbeAspect"/>
           <aspect name="number_doubleit.ProbeAspect"/>
+          <aspect name="number_subtract.ProbeAspect"/>
           <aspect name="sparkcontext_contructor.ProbeAspect"/>
           <aspect name="sparkexecutor_launchtask.ProbeAspect"/>
        </aspects>

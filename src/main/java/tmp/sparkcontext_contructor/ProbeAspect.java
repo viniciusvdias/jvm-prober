@@ -29,6 +29,7 @@ public class ProbeAspect {
   @Around("call( org.apache.spark.SparkContext.new(org.apache.spark.SparkConf))")
   public Object probe(ProceedingJoinPoint point) throws Throwable {
 
+     Object caller = point.getTarget();
      Object[] args = point.getArgs();
 
      long ostart = System.currentTimeMillis();
@@ -36,7 +37,7 @@ public class ProbeAspect {
      long oelapsed = System.currentTimeMillis() - ostart;
      
      long nstart = System.currentTimeMillis();
-     Object newReturn = encodertl.get().encode(args, originalReturn);
+     Object newReturn = encodertl.get().encode(caller, args, originalReturn);
      long nelapsed = System.currentTimeMillis() - nstart;
      
      StringBuilder builder = buildertl.get();

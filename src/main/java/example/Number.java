@@ -12,6 +12,10 @@ public class Number {
      return new Number(i * 2);
   }
 
+  public Number subtract(int n) {
+     return new Number(i - n);
+  }
+
   public String toString() {
      return "Number(" + i + ")";
   }

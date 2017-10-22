@@ -11,6 +11,13 @@ probes:
       method: example.Number.doubleIt
       return: example.Number
 
+   number_subtract:
+      method: example.Number.subtract
+      args:
+         - int
+      return: example.Number
+      encoder: encoder.NumberSubtractToAddEncoder
+
    # probing a constructor having one argument
    sparkcontext_contructor:
       method: org.apache.spark.SparkContext.new
