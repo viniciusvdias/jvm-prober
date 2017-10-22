@@ -3,7 +3,7 @@ Give me a method signature and optionally an encoder and I will instrument it fo
 
 ## Configuring
 
-1. Edit the file `build.gradle` to include the project you wish to instrument. For example, the following snippet includes Spark:
+1. Edit the file `build.gradle` to include the project you wish to instrument. For example, the following snippet includes [Apache Spark](https://github.com/apache/spark):
 ```
 dependencies {
     // framework to be probed
@@ -50,4 +50,37 @@ class in this project. The following steps explain how would you do that:
 return:
 
 ```
+package encoder;
+
+import example.Number;
+
+// encoder for method [ example.Number example.Number.subtract(int) ]
+// this encoder encoder bypasses the method by summing the argument instead of subtracting it
+public class NumberSubtractToAddEncoder extends Encoder {
+   public Object encode(Object caller, Object[] args, Object originalReturn) {
+      Number number = (Number) caller;
+      Integer n = (Integer) args[0];
+      Number modifiedReturn = new Number(number.i + n);
+      return modifiedReturn;
+   }
+}
 ```
+
+Note that the arguments of `encode` are all of `Object` type, even for primitive types.
+This is because `encode` could be instrumenting any
+other method, but because we know we want to use it to instrument `subtract` it is safe to cast arguments and the
+caller.
+
+2. Now you just need to inform in the probe specifications file that you want to apply the encoder above to the probe.
+
+```
+probes:
+    number_subtract:
+        method: example.Number.subtract
+        args:
+            - int
+        return: example.Number
+        encoder: encoder.NumberSubtractToAddEncoder
+```
+
+3. Ok, now you are ready to [build](#building) and [run](#running-your-application) your application.
