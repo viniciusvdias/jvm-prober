@@ -12,7 +12,7 @@ dependencies {
 ```
 
 2. Edit the file `src/main/resources/probes_spec.yaml` with the probe specifications, basically meaning that you have to provide a list of method signatures.
-You can also provide custom encoders to modify method returns or to inspect the method call in a particular way.
+You can also provide custom [encoders](#encoders) to modify method returns or to inspect the method call in a particular way.
 By default we just log the calls.
 
 ## Building
@@ -39,3 +39,15 @@ export JAVA_TOOLS_OPTIONS="-javaagent:${thisProjectAbsolutePath}/lib/aspectjweav
 ```
 
 3. This is it! One observation is that if the application is distributed, all the JVM instances must be configured according to steps 1 and 2.
+
+## Encoders
+
+You can also bypass the instrumented methods by implementing a custom encoder for that particular probe. The default encoder
+is `encoder.Encoder`, which just returns the original result. However you can implement your own encoder by extending that
+class in this project. The following steps explain how would you do that:
+
+1. Extend the class encoder and override the method `encode`. For example, the following encoder will bypass the original
+return:
+
+```
+```
